@@ -1,4 +1,4 @@
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/separator";
 
 const Billing = () => {
   return (
@@ -10,7 +10,7 @@ const Billing = () => {
         </p>
       </div>
       <Separator />
-      
+
       <div className="w-full">
         {/* Current Plan */}
         {/* Upgrade Options */}
@@ -57,9 +57,9 @@ const Billing = () => {
 
           <p className="text-base font-medium">
             🔓 <span className="text-green-600">Get it here:</span>
-             <a
+            <a
               className="text-blue-500 underline ml-1"
-              href="https://tinyurl.com/extended-stripe-integration "
+              href="https://tinyurl.com/extended-stripe-integration"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -69,10 +69,9 @@ const Billing = () => {
           <br />
           <br />
         </div>
-       
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Billing
+export default Billing;

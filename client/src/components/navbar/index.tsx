@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { Menu } from "lucide-react";
-import { NavLink, useLocation } from "react-router-dom";
-import { PROTECTED_ROUTES } from "@/routes/common/routePath";
-import { cn } from "@/lib/utils";
-import Logo from "../logo/logo";
-import { Button } from "../ui/button";
-import { Sheet, SheetContent } from "../ui/sheet";
-import { UserNav } from "./user-nav";
-import LogoutDialog from "./logout-dialog";
-import { useTypedSelector } from "@/app/hook";
+import { useTypedSelector } from '@/app/hook';
+import { cn } from '@/lib/utils';
+import { PROTECTED_ROUTES } from '@/routes/common/routePath';
+import { Menu } from 'lucide-react';
+import { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import Logo from '../logo/logo';
+import { Button } from '../ui/button';
+import { Sheet, SheetContent } from '../ui/sheet';
+import LogoutDialog from './logout-dialog';
+import { UserNav } from './user-nav';
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -20,19 +20,19 @@ const Navbar = () => {
   const routes = [
     {
       href: PROTECTED_ROUTES.OVERVIEW,
-      label: "Overview",
+      label: 'Overview',
     },
     {
       href: PROTECTED_ROUTES.TRANSACTIONS,
-      label: "Transactions",
+      label: 'Transactions',
     },
     {
       href: PROTECTED_ROUTES.REPORTS,
-      label: "Reports",
+      label: 'Reports',
     },
     {
       href: PROTECTED_ROUTES.SETTINGS,
-      label: "Settings",
+      label: 'Settings',
     },
   ];
 
@@ -40,8 +40,8 @@ const Navbar = () => {
     <>
       <header
         className={cn(
-          "w-full px-4 py-3 pb-3 lg:px-14 bg-[var(--secondary-dark-color)] text-white ",
-          pathname === PROTECTED_ROUTES.OVERVIEW && "!pb-3"
+          'w-full px-4 py-3 pb-3 lg:px-14 bg-[var(--secondary-dark-color)] text-white ',
+          pathname === PROTECTED_ROUTES.OVERVIEW && '!pb-3'
         )}
       >
         <div className="w-full flex h-14 max-w-[var(--max-width)] items-center mx-auto">
@@ -65,6 +65,7 @@ const Navbar = () => {
             <nav className="hidden md:flex items-center gap-x-2 overflow-x-auto">
               {routes?.map((route) => (
                 <Button
+                  key={route.href}
                   size="sm"
                   variant="ghost"
                   className={cn(
@@ -73,13 +74,11 @@ const Navbar = () => {
                      text-white/60 focus:bg-white/30
                      transtion !bg-transparent !text-[14.5px]
                      `,
-                    pathname === route.href && "text-white"
+                    pathname === route.href && 'text-white'
                   )}
                   asChild
                 >
-                  <NavLink key={route.href} to={route.href}>
-                    {route.label}
-                  </NavLink>
+                  <NavLink to={route.href}>{route.label}</NavLink>
                 </Button>
               ))}
             </nav>
@@ -90,6 +89,7 @@ const Navbar = () => {
                 <nav className="flex flex-col gap-y-2 pt-9">
                   {routes?.map((route) => (
                     <Button
+                      key={route.href}
                       size="sm"
                       variant="ghost"
                       className={cn(
@@ -97,13 +97,11 @@ const Navbar = () => {
                        hover:bg-white/10 hover:text-black border-none
                        text-black/70 focus:bg-white/30
                        transtion !bg-transparent justify-start`,
-                        pathname === route.href && "!bg-black/10 text-black"
+                        pathname === route.href && '!bg-black/10 text-black'
                       )}
                       asChild
                     >
-                      <NavLink key={route.href} to={route.href}>
-                        {route.label}
-                      </NavLink>
+                      <NavLink to={route.href}>{route.label}</NavLink>
                     </Button>
                   ))}
                 </nav>
@@ -114,8 +112,8 @@ const Navbar = () => {
             {/* Right side - User actions */}
             <div className="flex items-center space-x-4">
               <UserNav
-                userName={user?.name || ""}
-                profilePicture={user?.profilePicture || ""}
+                userName={user?.name || ''}
+                profilePicture={user?.profilePicture || ''}
                 onLogout={() => setIsLogoutDialogOpen(true)}
               />
             </div>
